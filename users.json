@@ -1,0 +1,38 @@
+{
+    "gabriellopes": {
+        "password": "gs123",
+        "name": "Gabriel de Souza Lopes",
+        "permissions": [
+            "Página Inicial",
+            "Produto",
+            "Estoque",
+            "Fornecedor",
+            "Vendedores",
+            "Pedidos",
+            "Pedidos Venda",
+            "Positivacao",
+            "Gerenciar Usuários"
+        ]
+    },
+    "CBTLOGISTICA": {
+        "password": "LOGISTICA@2025",
+        "name": "Karen Cristina",
+        "permissions": [
+            "Pedidos",
+            "Produto",
+            "Fornecedor",
+            "Estoque",
+            "Vendedores",
+            "Pedidos Venda",
+            "Positivacao",
+            "Página Inicial"
+        ]
+    },
+    "teste01": {
+        "password": "teste",
+        "name": "TESTE",
+        "permissions": [
+            "Produto"
+        ]
+    }
+}
