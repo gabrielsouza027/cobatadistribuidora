@@ -4,7 +4,7 @@ import json
 import os
 import importlib
 
-st.set_page_config(page_title="Cobata Distribuidora", page_icon="Arquivos/transferir.png", layout="wide", initial_sidebar_state="auto")
+st.set_page_config(page_title="Cobata Distribuidora", page_icon="transferir.png", layout="wide", initial_sidebar_state="auto")
 
 # Caminho do arquivo JSON
 USER_DATA_FILE = "users.json"
@@ -36,7 +36,7 @@ def save_users(users):
 
 def navigation_bar():
     # A imagem agora usa 'use_container_width' para evitar o aviso
-    st.sidebar.image("Arquivos/WhatsApp_Image_2024-11-28_at_10.47.28-removebg-preview.png", use_container_width=True)
+    st.sidebar.image("WhatsApp_Image_2024-11-28_at_10.47.28-removebg-preview.png", use_container_width=True)
     
     # --- SEU CSS ORIGINAL E COMPLETO FOI RESTAURADO AQUI ---
     st.markdown("""
@@ -164,7 +164,7 @@ def login_page():
     with col2:
         # Usamos st.container() dentro da coluna para agrupar visualmente
         with st.container():
-            st.image("Arquivos/WhatsApp_Image_2024-11-28_at_10.47.28-removebg-preview.png", width=200)
+            st.image("WhatsApp_Image_2024-11-28_at_10.47.28-removebg-preview.png", width=200)
             st.title("Login")
             
             username = st.text_input("Nome de usuário")
@@ -318,4 +318,5 @@ def main():
             login_page()
 
 if __name__ == "__main__":
+
     main()
