@@ -8,13 +8,26 @@ import logging
 import plotly.express as px
 from streamlit_autorefresh import st_autorefresh
 import hashlib
+import os # <-- 1. ADICIONE ESTA LINHA
 
 # --- Configurações Iniciais ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Caminho para o banco de dados
-DB_FILE = f"pcvendedor2.db"
+
+# --- 2. SUBSTITUA A LINHA ANTIGA DO DB_FILE POR ESTE BLOCO ---
+# Este código cria um caminho dinâmico para o banco de dados, ideal para o GitHub.
+# Ele assume que o arquivo 'pcvendedor2.db' está na MESMA PASTA que este script Python.
+try:
+    # __file__ é o caminho do script. os.path.dirname pega o diretório dele.
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    # Se __file__ não estiver definido (ex: rodando em um notebook interativo), usa o diretório atual.
+    script_dir = os.path.abspath('.')
+
+DB_FILE = os.path.join(script_dir, "pcvendedor2.db")
+# ----------------------------------------------------------------
+
 
 # --- NOVO: Função para Otimizar o Banco de Dados ---
 def initialize_database():
@@ -32,8 +45,13 @@ def initialize_database():
         connection.close()
         logger.info("Índice do banco de dados verificado/criado com sucesso.")
     except Exception as e:
-        st.error(f"Erro ao inicializar e otimizar o banco de dados: {e}")
+        # Adiciona uma verificação se o arquivo existe para dar uma mensagem de erro mais clara
+        if not os.path.exists(DB_FILE):
+             st.error(f"ERRO CRÍTICO: O arquivo de banco de dados 'pcvendedor2.db' não foi encontrado em {DB_FILE}. Verifique se o arquivo está na mesma pasta do script.")
+        else:
+            st.error(f"Erro ao inicializar e otimizar o banco de dados: {e}")
         logger.error(f"Erro ao criar índice: {e}")
+
 
 # --- Funções de Acesso e Processamento de Dados ---
 @st.cache_data(ttl=300)
@@ -317,4 +335,3 @@ def main():
 if __name__ == '__main__':
     initialize_database()
     main()
-
