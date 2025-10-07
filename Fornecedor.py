@@ -14,8 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # Caminho para o banco de dados
-DB_PATH = "database\\"
-DB_FILE = f"{DB_PATH}pcvendedor2.db"
+DB_FILE = f"pcvendedor2.db"
 
 # --- NOVO: Função para Otimizar o Banco de Dados ---
 def initialize_database():
@@ -318,3 +317,4 @@ def main():
 if __name__ == '__main__':
     initialize_database()
     main()
+
